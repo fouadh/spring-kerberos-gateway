@@ -10,7 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.security.kerberos.test.MiniKdc;
 
 public class Application {
-    private static final String DEFAULT_WORK_DIR = "/tmp/krb-workdir";
+    private static final String DEFAULT_WORK_DIR = "/tmp/minikdc";
 
     public static void main(String[] args) throws Exception {
         String workDir = DEFAULT_WORK_DIR;

@@ -4,3 +4,7 @@ zuul:
       path: /some-service/**
       stip-prefix: true
       url: http://localhost:9090
+
+app:
+  service-principal: HTTP/localhost
+  keytab-location: /tmp/minikdc/example.keytab
