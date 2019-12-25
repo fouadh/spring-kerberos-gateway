@@ -1,5 +1,8 @@
 package com.fha.kerberos.gateway.zuul;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,11 +23,12 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebSecurityConfig.class);
 
-	@Value("${app.service-principal}")
+	@Value("${gateway.service-principal}")
 	private String servicePrincipal;
 
-	@Value("${app.keytab-location}")
+	@Value("${gateway.keytab-location}")
 	private String keytabLocation;
 
 	@Override
@@ -87,6 +91,8 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public SunJaasKerberosTicketValidator sunJaasKerberosTicketValidator() {
+	    LOGGER.info("----> servicePrincipal: {}", servicePrincipal);
+        LOGGER.info("----> keytabLocation: {}", keytabLocation);
 		SunJaasKerberosTicketValidator ticketValidator = new SunJaasKerberosTicketValidator();
 		ticketValidator.setServicePrincipal(servicePrincipal);
 		ticketValidator.setKeyTabLocation(new FileSystemResource(keytabLocation));

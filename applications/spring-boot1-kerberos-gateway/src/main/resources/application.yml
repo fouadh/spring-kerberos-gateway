@@ -3,8 +3,8 @@ zuul:
     some-service:
       path: /some-service/**
       stip-prefix: true
-      url: http://localhost:9090
+      url: ${SERVICE_ENDPOINT:http://localhost:9090}
 
-app:
-  service-principal: HTTP/localhost
-  keytab-location: /tmp/minikdc/example.keytab
+gateway:
+  service-principal: ${SERVICE_PRINCIPAL:HTTP/localhost}
+  keytab-location: ${KEYTAB_LOCATION:/tmp/minikdc/example.keytab}
