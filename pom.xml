@@ -11,7 +11,7 @@
     <name>Kerberos Gateway with Spring POC</name>
 
     <modules>
-      <module>applications/spring-boot1-kerberos-gateway</module>
+      <module>applications/kerberos-zuul</module>
       <module>applications/spring-boot2-kerberos-gateway</module>
       <module>applications/minikdc</module>
       <module>applications/some-service</module>
