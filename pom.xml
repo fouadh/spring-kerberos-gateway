@@ -12,7 +12,7 @@
 
     <modules>
       <module>applications/kerberos-zuul</module>
-      <module>applications/spring-boot2-kerberos-gateway</module>
+      <module>applications/kerberos-spring-cloud-gateway</module>
       <module>applications/minikdc</module>
       <module>applications/some-service</module>
     </modules>
