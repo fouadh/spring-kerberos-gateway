@@ -16,4 +16,15 @@
       <module>applications/minikdc</module>
       <module>applications/some-service</module>
     </modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<inherited>true</inherited>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
