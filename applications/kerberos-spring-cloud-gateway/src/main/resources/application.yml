@@ -1,9 +1,6 @@
-zuul:
-  routes:
-    some-service:
-      path: /some-service/**
-      stip-prefix: true
-      url: ${SERVICE_ENDPOINT:http://localhost:9090}
+service:
+  url: ${SERVICE_ENDPOINT:http://localhost:9090}
+  path: ${SERVICE_PATH:/some-service}
 
 gateway:
   service-principal: ${SERVICE_PRINCIPAL:HTTP/localhost}

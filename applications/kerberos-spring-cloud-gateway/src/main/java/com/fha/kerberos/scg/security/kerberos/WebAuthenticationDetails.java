@@ -1,4 +1,4 @@
-package org.springframework.security.kerberos.reactive.authentication;
+package com.fha.kerberos.scg.security.kerberos;
 
 import org.springframework.web.server.ServerWebExchange;
 

@@ -17,7 +17,7 @@ import org.springframework.security.kerberos.authentication.KerberosAuthenticati
 import org.springframework.security.kerberos.authentication.KerberosServiceAuthenticationProvider;
 import org.springframework.security.kerberos.authentication.sun.SunJaasKerberosClient;
 import org.springframework.security.kerberos.authentication.sun.SunJaasKerberosTicketValidator;
-import org.springframework.security.kerberos.reactive.authentication.ReactiveSpnegoAuthenticationProcessingFilter;
+import com.fha.kerberos.scg.security.kerberos.ReactiveSpnegoAuthenticationProcessingFilter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration

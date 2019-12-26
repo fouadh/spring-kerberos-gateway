@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
     <groupId>com.fha</groupId>
-    <artifactId>spring-boot2-kerberos-gateway</artifactId>
+    <artifactId>kerberos-spring-cloud-gateway</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
