@@ -10,6 +10,7 @@ COPY --from=exploded /app/BOOT-INF/classes /app
 VOLUME /tmp
 
 ENV SERVICE_ENDPOINT http://some-service
+ENV SERVICE_PATH /some-path
 ENV KRB5_CONF /tmp/somewhere/krb5.conf
 ENV SERVICE_PRINCIPAL service/localhost
 ENV KEYTAB_LOCATION /tmp/somelocation
