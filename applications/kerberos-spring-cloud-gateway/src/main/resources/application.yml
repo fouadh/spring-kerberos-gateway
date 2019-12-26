@@ -1,0 +1,15 @@
+zuul:
+  routes:
+    some-service:
+      path: /some-service/**
+      stip-prefix: true
+      url: ${SERVICE_ENDPOINT:http://localhost:9090}
+
+gateway:
+  service-principal: ${SERVICE_PRINCIPAL:HTTP/localhost}
+  keytab-location: ${KEYTAB_LOCATION:/tmp/minikdc/example.keytab}
+
+
+logging:
+  level:
+    org.springframework.security.kerberos.reactive.authentication: DEBUG
