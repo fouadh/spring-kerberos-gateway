@@ -18,5 +18,5 @@ ENV KEYTAB_LOCATION /conf/gateway.keytab
 WORKDIR /app
 EXPOSE 8080
 
-ENTRYPOINT java -cp "/app:/app/lib/*" com.fha.kerberos.scg.Application ${KRB5_CONF}
+ENTRYPOINT java -cp "/app:/app/lib/*" com.fha.kerberos.scg.Application
 

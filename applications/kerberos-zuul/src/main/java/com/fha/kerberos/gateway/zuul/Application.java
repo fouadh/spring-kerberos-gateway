@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.util.StringUtils;
 
 @SpringBootApplication
 @EnableZuulProxy
@@ -16,8 +17,9 @@ public class Application {
 
     public static void main(String[] args) {
         String krb5ConfPath = "/tmp/minikdc/krb5.conf";
-        if (args != null && args.length > 0)
-            krb5ConfPath = args[0];
+        String confVariable = System.getenv("KRB5_CONF");
+        if (StringUtils.hasText(confVariable))
+            krb5ConfPath = confVariable;
 
         LOGGER.info("-----> KRB5 CONF: {}", krb5ConfPath);
         System.setProperty("java.security.krb5.conf",
