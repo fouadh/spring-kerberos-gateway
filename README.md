@@ -60,6 +60,8 @@ The value that interests you is `userpassword`.
 
 These principals are the ones to use to test the gateways with MiniKDC.
 
+---
+
 ## some-service
 
 This is a simple Spring Boot app with one controller endpoint. It is used to fake a downstream service that will be 
@@ -75,6 +77,8 @@ mvn spring-boot:run
 ```
 
 The app will be listening on port 9090 by default.
+
+---
 
 ## kerberos-zuul
 
@@ -115,6 +119,8 @@ the authentication is ok and the url path matches the `SERVICE_PATH` value.
 
 spring-security-kerberos integrates very well with Zuul and Spring Boot 2. The configuration is straightforward and the
 same as if you were working with Spring Boot 1.
+
+---
 
 ## kerberos-spring-cloud-gateway
 
