@@ -8,20 +8,18 @@ The goals of these experimentations are:
 * integrate spring-security-kerberos in Zuul (with spring boot 2)
 * integrate spring-security-kerberos in Spring Cloud Gateway (with spring boot 2)
 
-# Applications
-
-## minikdc
+# minikdc
 
 This application is a Kerberos KDC used for local testing.
 
-### Build the app
+## Build the app
 
 ```
 cd applications/minikdc
 mvn clean package
 ```
 
-### Run the app
+## Run the app
 
 ```
 mvn exec:java -Dexec.mainClass=com.fha.minikdc.Application -Dexec.args=[PATH]
@@ -60,16 +58,14 @@ The value that interests you is `userpassword`.
 
 These principals are the ones to use to test the gateways with MiniKDC.
 
----
-
-## some-service
+# some-service
 
 This is a simple Spring Boot app with one controller endpoint. It is used to fake a downstream service that will be 
 reached from a gateway implementing Kerberos security.
 
 In a real environment, such an application would probably be in a private and secured network since it is not directly secured.
 
-### Run the app
+## Run the app
 
 ```
 cd applications/some-service
@@ -78,13 +74,11 @@ mvn spring-boot:run
 
 The app will be listening on port 9090 by default.
 
----
-
-## kerberos-zuul
+# kerberos-zuul
 
 This app integrates Spring Boot 2, Zuul and Spring Security Kerberos.
 
-### Run the app
+## Run the app
 
 ```
 cd applications/kerberos-zuul
@@ -100,7 +94,7 @@ the authentication is ok and the url path matches the `SERVICE_PATH` value. Defa
 
 The app will be listening on port 8080 by default.
 
-### Dockerization
+## Dockerization
 
 ```
 docker build . -t kerberos-zuul
@@ -115,18 +109,16 @@ the authentication is ok and the url path matches the `SERVICE_PATH` value.
 * **SERVICE_PATH**: the path to the downstream service from the gateway.
 * **SERVICE_PRINCIPAL**: the principal representing the service. Is it really useful ???
 
-### Conclusion of the experimentation
+## Conclusion of the experimentation
 
 spring-security-kerberos integrates very well with Zuul and Spring Boot 2. The configuration is straightforward and the
 same as if you were working with Spring Boot 1.
 
----
-
-## kerberos-spring-cloud-gateway
+# kerberos-spring-cloud-gateway
 
 This app integrates Spring Cloud Gateway and Spring Security Kerberos.
 
-### Run the app
+## Run the app
 
 ```
 cd applications/kerberos-spring-cloud-gateway
@@ -137,7 +129,7 @@ The configuration is the same than the Zuul gateway.
 
 The app will be listening on port 8080 by default.
 
-### Dockerization
+## Dockerization
 
 ```
 docker build . -t kerberos-scg
@@ -148,7 +140,7 @@ The configuration is the same than the Zuul gateway.
 
 SERVICE_ENDPOINT=http://localhost:9090 SERVICE_PATH=/toto KRB5_CONF=/Users/fhamdi/tmp/kerberos/krb5-local.conf SERVICE_PRINCIPAL=HTTP/localhost KEYTAB_LOCATION=/Users/fhamdi/tmp/kerberos/gateway.keytab mvn spring-boot:run
 
-### Conclusion of the experimentation
+## Conclusion of the experimentation
  
 spring-security-kerberos doesn't integrate in a straightforward way with Spring Cloud Gateway. The reason is that SCG is built on
 Webflux and spring security must be configured in a reactive fashion.
