@@ -2,7 +2,8 @@ package com.fha.kerberos.scg;
 
 import com.fha.kerberos.scg.security.DummyUserDetailsService;
 import com.fha.kerberos.scg.security.ReactiveAuthenticationProviderAdapter;
-import com.fha.kerberos.scg.security.kerberos.KerberosNegotiateFilter;
+import com.fha.kerberos.scg.security.kerberos.ReactiveSpnegoAuthenticationEntryPoint;
+import com.fha.kerberos.scg.security.kerberos.ReactiveSpnegoAuthenticationProcessingFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +18,6 @@ import org.springframework.security.kerberos.authentication.KerberosAuthenticati
 import org.springframework.security.kerberos.authentication.KerberosServiceAuthenticationProvider;
 import org.springframework.security.kerberos.authentication.sun.SunJaasKerberosClient;
 import org.springframework.security.kerberos.authentication.sun.SunJaasKerberosTicketValidator;
-import com.fha.kerberos.scg.security.kerberos.ReactiveSpnegoAuthenticationProcessingFilter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration
@@ -33,9 +33,13 @@ public class SecurityConfig {
   @Bean
   SecurityWebFilterChain authorization(ServerHttpSecurity http) {
     return http
+        .csrf().disable()
+        .exceptionHandling()
+        .authenticationEntryPoint(new ReactiveSpnegoAuthenticationEntryPoint())
+        .and()
         .authorizeExchange(e -> e.anyExchange().authenticated())
-        .formLogin().and()
-        .addFilterBefore(new KerberosNegotiateFilter(), SecurityWebFiltersOrder.FORM_LOGIN)  // todo: how to test ?
+        .formLogin()
+        .and()
         .addFilterBefore(new ReactiveSpnegoAuthenticationProcessingFilter(authenticationManager()), SecurityWebFiltersOrder.HTTP_BASIC) // todo: how to test ? auth headers always empty in this filter !!!
         .build();
   }
