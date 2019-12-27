@@ -8,71 +8,7 @@ The goals of these experimentations are:
 * integrate spring-security-kerberos in Zuul (with spring boot 2)
 * integrate spring-security-kerberos in Spring Cloud Gateway (with spring boot 2)
 
-# minikdc
-
-This application is a Kerberos KDC used for local testing.
-
-## Build the app
-
-```
-cd applications/minikdc
-mvn clean package
-```
-
-## Run the app
-
-```
-mvn exec:java -Dexec.mainClass=com.fha.minikdc.Application -Dexec.args=[PATH]
-```
-
-* **PATH**: Path to where the configuration and data files will be generated. Default value: `/tmp/minikdc`
-
-When testing with the MiniKDC application, the configuration files will be needed to test the gateways:
-
-* `krb5.conf`
-* `example.keytab`
-
-Two principals are created and can be used for testing the gateways:
-
-* `client/localhost`
-* `HTTP/localhost`
-
-Their password can be found in the application logs after startup. Look for something like this:
-
-```
-2019-12-27 10:14:08 DEBUG LdifReader:1767 - next(): -- returning ldif dn: uid=HTTP/localhost,ou=users,dc=example,dc=com
-uid: HTTP/localhost
-krb5keyversionnumber: 0
-cn: HTTP/localhost
-sn: HTTP/localhost
-objectclass: top
-objectclass: person
-objectclass: inetOrgPerson
-objectclass: krb5principal
-objectclass: krb5kdcentry
-userpassword: a017ab75-3a1c-444e-949f-f2c37eb851c9
-krb5principalname: HTTP/localhost@EXAMPLE.COM
-```
-
-The value that interests you is `userpassword`.
-
-These principals are the ones to use to test the gateways with MiniKDC.
-
-# some-service
-
-This is a simple Spring Boot app with one controller endpoint. It is used to fake a downstream service that will be 
-reached from a gateway implementing Kerberos security.
-
-In a real environment, such an application would probably be in a private and secured network since it is not directly secured.
-
-## Run the app
-
-```
-cd applications/some-service
-mvn spring-boot:run
-```
-
-The app will be listening on port 9090 by default.
+The project contains two applications that can be used for local tests: `minikdc` and `some-service` that are described below.
 
 # kerberos-zuul
 
@@ -174,6 +110,74 @@ with its defaults.
 
 For a production-ready version, there will probably need some deeper investigation to check if this level of configuration
 is good enough or not.
+
+***
+
+# minikdc
+
+This application is a Kerberos KDC used for local testing.
+
+## Build the app
+
+```
+cd applications/minikdc
+mvn clean package
+```
+
+## Run the app
+
+```
+mvn exec:java -Dexec.mainClass=com.fha.minikdc.Application -Dexec.args=[PATH]
+```
+
+* **PATH**: Path to where the configuration and data files will be generated. Default value: `/tmp/minikdc`
+
+When testing with the MiniKDC application, the configuration files will be needed to test the gateways:
+
+* `krb5.conf`
+* `example.keytab`
+
+Two principals are created and can be used for testing the gateways:
+
+* `client/localhost`
+* `HTTP/localhost`
+
+Their password can be found in the application logs after startup. Look for something like this:
+
+```
+2019-12-27 10:14:08 DEBUG LdifReader:1767 - next(): -- returning ldif dn: uid=HTTP/localhost,ou=users,dc=example,dc=com
+uid: HTTP/localhost
+krb5keyversionnumber: 0
+cn: HTTP/localhost
+sn: HTTP/localhost
+objectclass: top
+objectclass: person
+objectclass: inetOrgPerson
+objectclass: krb5principal
+objectclass: krb5kdcentry
+userpassword: a017ab75-3a1c-444e-949f-f2c37eb851c9
+krb5principalname: HTTP/localhost@EXAMPLE.COM
+```
+
+The value that interests you is `userpassword`.
+
+These principals are the ones to use to test the gateways with MiniKDC.
+
+# some-service
+
+This is a simple Spring Boot app with one controller endpoint. It is used to fake a downstream service that will be 
+reached from a gateway implementing Kerberos security.
+
+In a real environment, such an application would probably be in a private and secured network since it is not directly secured.
+
+## Run the app
+
+```
+cd applications/some-service
+mvn spring-boot:run
+```
+
+The app will be listening on port 9090 by default.
 
 # References
 
