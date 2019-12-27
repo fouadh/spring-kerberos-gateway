@@ -7,13 +7,13 @@ COPY --from=exploded /app/BOOT-INF/lib /app/lib
 COPY --from=exploded /app/META-INF /app/META-INF
 COPY --from=exploded /app/BOOT-INF/classes /app
 
-VOLUME /tmp
+VOLUME /conf
 
 ENV SERVICE_ENDPOINT http://some-service
 ENV SERVICE_PATH /some-path
-ENV KRB5_CONF /tmp/somewhere/krb5.conf
 ENV SERVICE_PRINCIPAL service/localhost
-ENV KEYTAB_LOCATION /tmp/somelocation
+ENV KRB5_CONF /conf/krb5.conf
+ENV KEYTAB_LOCATION /conf/gateway.keytab
 
 WORKDIR /app
 EXPOSE 8080

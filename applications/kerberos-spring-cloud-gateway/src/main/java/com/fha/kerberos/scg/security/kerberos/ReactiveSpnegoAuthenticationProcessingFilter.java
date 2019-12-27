@@ -21,6 +21,8 @@ import java.util.List;
 
 /**
  * SpnegoAuthenticationProcessingFilter in the reactive world.
+ *
+ * @see org.springframework.security.kerberos.web.authentication.SpnegoAuthenticationProcessingFilter
  */
 public class ReactiveSpnegoAuthenticationProcessingFilter implements WebFilter {
   private static final Logger LOGGER = LoggerFactory.getLogger(ReactiveSpnegoAuthenticationProcessingFilter.class);
