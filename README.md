@@ -179,14 +179,9 @@ is good enough or not.
 
 # References
 
-[Spring Security Kerberos](https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/)
-
-[Spring Security Reactive](https://docs.spring.io/spring-security/site/docs/5.2.1.RELEASE/reference/htmlsingle/#reactive-applications)
-
-[Spring Cloud Gateway](https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/)
-
-[Spring Cloud Netflix - Zuul](https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.2.1.RELEASE/reference/html/#router-and-filter-zuul)
-
-[Introduction to SPNEGO/Kerberos Authentication in Spring](https://www.baeldung.com/spring-security-kerberos)
-
-[Spring Security Kerberos Integration](https://www.baeldung.com/spring-security-kerberos-integration)
+* [Spring Security Kerberos](https://docs.spring.io/spring-security-kerberos/docs/1.0.1.RELEASE/reference/htmlsingle/)
+* [Spring Security Reactive](https://docs.spring.io/spring-security/site/docs/5.2.1.RELEASE/reference/htmlsingle/#reactive-applications)
+* [Spring Cloud Gateway](https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/)
+* [Spring Cloud Netflix - Zuul](https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.2.1.RELEASE/reference/html/#router-and-filter-zuul)
+* [Introduction to SPNEGO/Kerberos Authentication in Spring](https://www.baeldung.com/spring-security-kerberos)
+* [Spring Security Kerberos Integration](https://www.baeldung.com/spring-security-kerberos-integration)
