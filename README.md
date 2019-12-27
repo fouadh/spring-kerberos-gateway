@@ -2,7 +2,7 @@
 
 This repository contains a set of applications to experiment with spring security kerberos.
 
-The goals of these experimentations are:
+Goals of this project:
 
 * use spring-security-kerberos with Spring Boot 2 (existing samples are only based on Spring Boot 1) 
 * integrate spring-security-kerberos in Zuul (with spring boot 2)
