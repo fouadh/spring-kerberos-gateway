@@ -74,8 +74,6 @@ docker run -it -p9999:8080 -v [LOCAL_CONF_DIR]:/conf -e SERVICE_ENDPOINT=[SERVIC
 
 The configuration is the same than the Zuul gateway.
 
-SERVICE_ENDPOINT=http://localhost:9090 SERVICE_PATH=/toto KRB5_CONF=/Users/fhamdi/tmp/kerberos/krb5-local.conf SERVICE_PRINCIPAL=HTTP/localhost KEYTAB_LOCATION=/Users/fhamdi/tmp/kerberos/gateway.keytab mvn spring-boot:run
-
 ## Conclusion of the experimentation
  
 spring-security-kerberos doesn't integrate in a straightforward way with Spring Cloud Gateway. The reason is that SCG is built on
