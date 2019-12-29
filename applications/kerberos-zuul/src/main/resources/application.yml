@@ -6,7 +6,7 @@ zuul:
   routes:
     some-service:
       path: ${service.path}/**
-      stip-prefix: true
+      strip-prefix: true
       url: ${service.url}
 
 gateway:
